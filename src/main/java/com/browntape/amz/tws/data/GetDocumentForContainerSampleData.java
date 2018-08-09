@@ -1,18 +1,17 @@
 package com.browntape.amz.tws.data;
 
-import com.amazonaws.services.gtsexternalsecurity.model.ContainerDocumentType;
-import com.amazonaws.services.gtsexternalsecurity.model.DocumentFormat;
 import com.amazonaws.services.gtsexternalsecurity.model.GetDocumentForContainerRequest;
+import com.browntape.amz.tws.dto.DocumentForContainerRequestDto;
 
 public class GetDocumentForContainerSampleData {
-	public static GetDocumentForContainerRequest buildRequest() {
+	public static GetDocumentForContainerRequest buildRequest(DocumentForContainerRequestDto documentForContainerRequestDto) {
 		GetDocumentForContainerRequest request = new GetDocumentForContainerRequest();
-		request.setClientRefShipmentId(SampleShipmentIdentifiers.getClientRefShipmentId());
-		request.setClientRefPackageId(SampleShipmentIdentifiers.getClientRefPackageIdId());
-		request.setDocumentFormat(DocumentFormat.PDF);
-		request.setAmazonBarcode(SampleShipmentIdentifiers.getAmazonBarcode());
-		request.setDocumentType(ContainerDocumentType.PRINTABLE_COMMERCIAL_INVOICE);
-		request.setNodeName("XDEI");
+		request.setClientRefShipmentId(documentForContainerRequestDto.getClientRefShipmentId());
+		request.setClientRefPackageId(documentForContainerRequestDto.getClientRefPackageId());
+		request.setDocumentFormat(documentForContainerRequestDto.getDocumentFormat());
+		request.setAmazonBarcode(documentForContainerRequestDto.getAmazonBarcode());
+		request.setDocumentType(documentForContainerRequestDto.getDocumentType());
+		request.setNodeName(documentForContainerRequestDto.getNodeName());
 		return request;
 	}
 }

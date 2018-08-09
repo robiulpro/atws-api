@@ -1,8 +1,8 @@
 package com.browntape.amz.tws.controller;
 
 import com.browntape.amz.tws.dto.AtwsRequestDto;
+import com.browntape.amz.tws.dto.DocumentForContainerRequestDto;
 import com.browntape.amz.tws.pact.AtwsService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +29,11 @@ public class ATWSController {
     System.out.println("label Shipment Info For Shipping"+ atwsRequestDto.getShipmentInfoForShipping());
 
     return getAtwsService().requestShippingLabel(atwsRequestDto);
+  }
+
+  @RequestMapping(value = "/getDocumentForContainer", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON)
+  public @ResponseBody String getDocumentForContainer(@RequestBody DocumentForContainerRequestDto documentForContainerRequestDto){
+    return getAtwsService().getDocumentForContainer(documentForContainerRequestDto);
   }
 
   public AtwsService getAtwsService() {
